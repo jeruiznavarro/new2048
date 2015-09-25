@@ -8,7 +8,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 
 	if((first_coordinate==0).and.(second_coordinate==0))then
 		if((matrix(first_coordinate+1,second_coordinate)>2).and.(matrix(first_coordinate,second_coordinate+1)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -18,7 +22,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((second_coordinate==0).and.((first_coordinate>0).and.(first_coordinate<cells-1)))then
 		if(((matrix(first_coordinate-1,second_coordinate)>2).and.(matrix(first_coordinate+1,second_coordinate)>2)).and.(matrix(first_coordinate,second_coordinate+1)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -28,7 +36,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((first_coordinate==cells-1).and.(second_coordinate==0))then
 		if((matrix(first_coordinate-1,second_coordinate)>2).and.(matrix(first_coordinate,second_coordinate+1)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -38,7 +50,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((first_coordinate==cells-1).and.((second_coordinate>0).and.(second_coordinate<cells-1)))then
 		if(((matrix(first_coordinate,second_coordinate-1)>2).and.(matrix(first_coordinate,second_coordinate+1)>2)).and.(matrix(first_coordinate-1,second_coordinate)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -48,7 +64,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((first_coordinate==cells-1).and.(second_coordinate==cells-1))then
 		if((matrix(first_coordinate-1,second_coordinate)>2).and.(matrix(first_coordinate,second_coordinate-1)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -58,7 +78,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((second_coordinate==cells-1).and.((first_coordinate>0).and.(first_coordinate<cells-1)))then
 		if(((matrix(first_coordinate-1,second_coordinate)>2).and.(matrix(first_coordinate+1,second_coordinate)>2)).and.(matrix(first_coordinate,second_coordinate-1)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -68,7 +92,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((first_coordinate==0).and.(second_coordinate==cells-1))then
 		if((matrix(first_coordinate+1,second_coordinate)>2).and.(matrix(first_coordinate,second_coordinate-1)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -78,7 +106,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else if((first_coordinate==0).and.((second_coordinate>0).and.(second_coordinate<cells-1)))then
 		if(((matrix(first_coordinate,second_coordinate-1)>2).and.(matrix(first_coordinate,second_coordinate+1)>2)).and.(matrix(first_coordinate+1,second_coordinate)>2))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20
@@ -88,7 +120,11 @@ subroutine check_cells(cells,first_coordinate,second_coordinate,matrix,final)
 		end if
 	else
 		if(((matrix(first_coordinate,second_coordinate-1)>2).and.(matrix(first_coordinate-1,second_coordinate)>2)).and.((matrix(first_coordinate+1,second_coordinate)>2).and.(matrix(first_coordinate,second_coordinate+1)>2)))then
-			final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2
+			if(rand()>0.75)then
+				final=4!generating a higher value for the final result if all the neighbouring cells have values higher than 2 in 1 case out of every 4
+			else
+				final=2!generating a value for the final result
+			end if
 		else
 			if(rand()>0.95)then
 				final=4!generating a higher value for the final result in 1 case out of every 20

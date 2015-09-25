@@ -32,7 +32,7 @@ subroutine help(call_from_start)
 			write(*,*) 'e'!end of input for the point
 			go to 10!going back to the beignning
 		else if(input_character=='l')then
-			write(*,*) 'set title "wasd alternates between using those keys as arrows and using the arros of the numpad (8624).\nq quits the game, n starts a new one, s saves it to a binary file and l loads it from a binary file.\nb enters the history mode where you can navigate the movements (within a certain range).\nAnd finally h opens this mode and lets you read these topics. Press any key to continue."'!instructions for the player
+			write(*,*) 'set title "wasd alternates between using those keys as arrows and using the arrows of the numpad (8624).\nq quits the game, n starts a new one, s saves it to a binary file and l loads it from a binary file.\nb enters the history mode where you can navigate the movements (within a certain range).\nAnd finally h opens this mode and lets you read these topics. Press any key to continue."'!instructions for the player
 			write(*,*) "plot '-' lc rgb "//'"#FFFFFF"'!it's necessary to plot something in the graph, so plotting a single white point is the best idea
 			write(*,*) '0.5 0.5'!the coordinates of said point
 			write(*,*) 'e'!end of input for the point
@@ -81,7 +81,7 @@ subroutine help(call_from_start)
 			write(*,*) 'replot'!updating the output
 			go to 20!going back to the beignning
 		else if(input_character=='l')then
-			write(*,*) 'set title "wasd alternates between using those keys as arrows and using the arros of the numpad (8624).\nq quits the game, n starts a new one, s saves it to a binary file and l loads it from a binary file.\nb enters the history mode where you can navigate the movements (within a certain range).\nAnd finally h opens this mode and lets you read these topics. Press any key to continue."'!instructions for the player
+			write(*,*) 'set title "wasd alternates between using those keys as arrows and using the arrows of the numpad (8624).\nq quits the game, n starts a new one, s saves it to a binary file and l loads it from a binary file.\nb enters the history mode where you can navigate the movements (within a certain range).\nAnd finally h opens this mode and lets you read these topics. Press any key to continue."'!instructions for the player
 			write(*,*) 'replot'!updating the output
 			read(*,*) !letting the player read the previous message
 			write(*,*) 'set title "What would you like to know about? For strategy tips introduce s.\nFor an explanation of the mechanics introduce m. For a list of gameplay commands introduce l.\nFor more on the history mode introduce b. To go back to the game introduce e."'!instructions for the player

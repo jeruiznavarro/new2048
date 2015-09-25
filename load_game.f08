@@ -41,8 +41,15 @@ subroutine load_game(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 	if(file_exists)then
 		open(20,file=filename,action='read',form='unformatted',access='stream')!opening the file
 	else
-		write(*,*) 'set title "File not found, try again or try with another file."'!invalid input
-		write(*,*) 'replot'!updating the output
+		if(call_from_start)then
+			write(*,*) 'set title "File not found, try again or try with another file."'!invalid input
+			write(*,*) "plot '-' lc rgb "//'"#FFFFFF"'!it's necessary to plot something in the graph, so plotting a single white point is the best idea
+			write(*,*) '0.5 0.5'!the coordinates of said point
+			write(*,*) 'e'!end of input for the point
+		else
+			write(*,*) 'set title "File not found, try again or try with another file."'!invalid input
+			write(*,*) 'replot'!updating the output
+		end if
 		go to 10!cycling through this if loop till a valid input is obtained
 	end if
 	read(20) cells,current_empty_cells,history_position,score,snapshots!reading the scalar variables

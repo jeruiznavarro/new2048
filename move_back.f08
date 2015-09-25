@@ -26,7 +26,7 @@ subroutine move_back(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 	moves_left_backwards=snapshots-1!resetting the amount of movements behind the current one
 	moves_left_forwards=0!resetting the amount of movements ahead of the current one
 	input_sum=0!resetting the sum of the inputs
-	temporary_position=history_position!setting the temporary target as the current position in history
+	temporary_position=history_position-1!setting the temporary target as the current position in history
 	write(*,*) 'set title "How many movements do you want to go back?\n0 saves the changes and goes back to playing, and 1000 calls the help screen.\nNegative numbers move forward, but not through the last movement.\nThere are',moves_left_backwards,' movements left behind the current one\nand',moves_left_forwards,' movements left ahead of the current one."'!asking the player what the program should do
 	write(*,*) 'replot'!updating the output
 10	read(*,*) input!reading the number of steps to go back

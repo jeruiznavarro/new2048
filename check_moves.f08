@@ -10,51 +10,52 @@ subroutine check_moves(cells,matrix,no_moves)
 		do i=0,cells-1
 			if((i==0).and.(j==0))then
 				if((matrix(i,j)==matrix(i+1,j)).or.(matrix(i,j)==matrix(i,j+1)))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((j==0).and.((i>0).and.(i<cells-1)))then
 				if((matrix(i,j)==matrix(i,j+1)).or.((matrix(i,j)==matrix(i-1,j)).or.(matrix(i,j)==matrix(i+1,j))))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((i==cells-1).and.(j==0))then
 				if((matrix(i,j)==matrix(i-1,j)).or.(matrix(i,j)==matrix(i,j+1)))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((i==cells-1).and.((j>0).and.(j<cells-1)))then
 				if((matrix(i,j)==matrix(i-1,j)).or.((matrix(i,j)==matrix(i,j-1)).or.(matrix(i,j)==matrix(i,j+1))))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((i==cells-1).and.(j==cells-1))then
 				if((matrix(i,j)==matrix(i-1,j)).or.(matrix(i,j)==matrix(i,j-1)))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((j==cells-1).and.((i>0).and.(i<cells-1)))then
 				if((matrix(i,j)==matrix(i,j-1)).or.((matrix(i,j)==matrix(i-1,j)).or.(matrix(i,j)==matrix(i+1,j))))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((i==0).and.(j==cells-1))then
 				if((matrix(i,j)==matrix(i+1,j)).or.(matrix(i,j)==matrix(i,j-1)))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else if((i==0).and.((j>0).and.(j<cells-1)))then
 				if((matrix(i,j)==matrix(i+1,j)).or.((matrix(i,j)==matrix(i,j-1)).or.(matrix(i,j)==matrix(i,j+1))))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			else
 				if(((matrix(i,j)==matrix(i-1,j)).or.(matrix(i,j)==matrix(i+1,j))).or.((matrix(i,j)==matrix(i,j-1)).or.(matrix(i,j)==matrix(i,j+1))))then
-					no_moves=.false.!there is at least one possible movements
+					no_moves=.false.!there is at least one possible movement
 					return
 				end if
 			end if
 		end do
 	end do
+	no_moves=.true.!after checking all the cells, there are no possible movements
 	return
 end subroutine check_moves

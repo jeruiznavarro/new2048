@@ -112,7 +112,7 @@ subroutine move_right(auxiliary_empty_cells,auxiliary_empty_cells_history,curren
 		end do
 	end do
 	score_history(history_position)=score!recording the current score in the history
-	random_component=nint(rand()*dble(current_empty_cells),4)-1!selecting a new cell to fill it with a number
+	random_component=nint(rand()*dble(current_empty_cells-1),4)!selecting a new cell to fill it with a number
 	new_cell_index=empty_cells(random_component)!the index of the new cell
 	new_cell_first_coordinate=index_to_first_coordinate(new_cell_index,cells)!x coordinate of the new cell
 	new_cell_second_coordinate=index_to_second_coordinate(new_cell_index,cells)!y coordinate of the new cell
