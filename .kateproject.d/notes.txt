@@ -1,1 +1,1 @@
-there might be something wrong when the random numbers are generated to select a new cell to occupy after each movement
+adding support for help in spanish with a lot of variables for what's shown on screen maybe?

@@ -21,7 +21,7 @@ program two_hundred_sixty_two_thousand_one_hundred_forty_four
 
 	call start(auxiliary_empty_cells,auxiliary_empty_cells_history,current_empty_cells_history,empty_cells,empty_cells_history,matrix,matrix_history,score_history)!asking the player if a new game should start or if a game is to be loaded
 	do
-		call prompt_player(auxiliary_empty_cells,auxiliary_empty_cells_history,current_empty_cells,current_empty_cells_history,empty_cells,empty_cells_history,matrix,matrix_history,score_history)!asking the player what s/he wants to do
+		call prompt_player(auxiliary_empty_cells,auxiliary_empty_cells_history,current_empty_cells_history,empty_cells,empty_cells_history,matrix,matrix_history,score_history)!asking the player what s/he wants to do
 		if(game_over)call end_game(auxiliary_empty_cells,auxiliary_empty_cells_history,current_empty_cells_history,empty_cells,empty_cells_history,game_over,matrix,matrix_history,score_history)!the player is asked if a new game should start or if the game is to be quitted
 	end do
 end program two_hundred_sixty_two_thousand_one_hundred_forty_four

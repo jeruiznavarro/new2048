@@ -1,10 +1,9 @@
-subroutine prompt_player(auxiliary_empty_cells,auxiliary_empty_cells_history,current_empty_cells,current_empty_cells_history,empty_cells,empty_cells_history,matrix,matrix_history,score_history)
+subroutine prompt_player(auxiliary_empty_cells,auxiliary_empty_cells_history,current_empty_cells_history,empty_cells,empty_cells_history,matrix,matrix_history,score_history)
 	implicit none!all variables must be declared
 	logical::wasd=.false.!if true, the common wasd combination will replace the arrows in teh numpad
 	character(4)::input_character='----'!this will be used to pass orders to the program
 	integer(4),intent(inout)::auxiliary_empty_cells(0:255)!this vector keeps track of where the index of a certain cell is located in the empty_cells array, for example: empty_cells(0:3)=(/1,3,0,2/) would mean that the values of this array are the following: auxiliary_empty_cells(0:3)=(/2,0,1,3/), thus, only the index of a cell is needed when its interal data are required
 	integer(4),intent(inout)::auxiliary_empty_cells_history(0:255,0:99)!same as matrix_history, but the player doesn't interact with this variable, it's only kept so it's faster to move back in the history of movements
-	integer(4),intent(in)::current_empty_cells!this is the amount of empty cells in a certain moment
 	integer(4),intent(inout)::current_empty_cells_history(0:99)!same as matrix_history, but the player doesn't interact with this variable, it's only kept so it's faster to move back in the history of movements
 	integer(4),intent(inout)::empty_cells(0:255)!the indeces of empty cells are sequentially kept here with no occupied cells in between, all of those are at the end of the array
 	integer(4),intent(inout)::empty_cells_history(0:255,0:99)!same as matrix_history, but the player doesn't interact with this variable, it's only kept so it's faster to move back in the history of movements
@@ -14,7 +13,7 @@ subroutine prompt_player(auxiliary_empty_cells,auxiliary_empty_cells_history,cur
 	integer(4),intent(inout)::score_history(0:99)!same as matrix_history, but the player doesn't interact with this variable, it's only kept so it's faster to move back in the history of movements
 	common /score/ score!this subroutine needs the score variable
 
-	write(*,*) 'set title "Score:',score,' CEC',current_empty_cells,'\nYou can just introduce h to get help at any moment."'!instructions for the player
+	write(*,*) 'set title "Score:',score,'\nYou can just introduce h to get help at any moment."'!instructions for the player
 	write(*,*) 'replot'!updating the output
 10	read(*,*) input_character!reading player command
 	if((input_character(1:1)=='8').or.((input_character(1:1)=='w').and.(wasd)))then

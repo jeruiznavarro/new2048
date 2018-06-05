@@ -4,6 +4,7 @@ subroutine move_down(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 	logical::exit_1=.false.!if true (and exit_2 true as well), the recursive search for empty cells will end
 	logical::exit_2=.false.!if true (and exit_1 true as well), the recursive search for empty cells will end
 	logical::game_over!this variable will be false until there are no more possible moves
+	logical::no_cells_moved=.true.!if true, it will mean that no cells have moved at all before the subroutine adds another cell
 	logical::no_moves!if true, it will mean that there are no possible movements left
 	integer(4),intent(inout)::auxiliary_empty_cells(0:255)!this vector keeps track of where the index of a certain cell is located in the empty_cells array, for example: empty_cells(0:3)=(/1,3,0,2/) would mean that the values of this array are the following: auxiliary_empty_cells(0:3)=(/2,0,1,3/), thus, only the index of a cell is needed when its interal data are required
 	integer(4),intent(inout)::auxiliary_empty_cells_history(0:255,0:99)!same as matrix_history, but the player doesn't interact with this variable, it's only kept so it's faster to move back in the history of movements
@@ -36,11 +37,13 @@ subroutine move_down(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 	common /logic/ game_over,no_moves!sharing the logical variables
 	common /score/ score!sharing the score variable too
 
+	no_cells_moved=.true.!resetting this variable
 	do i=0,cells-1
 		k=-1!resetting the auxiliary counter so that there are no problems with the cycle statement two lines below
 		do j=0,cells-2
 			if(k>j)cycle!moving on to the next non null cell in case that there are several non null cells one after the other
 			if((matrix(i,j)==matrix(i,j+1)).and.(matrix(i,j)>0))then
+				no_cells_moved=.false.!at least one cell has moved
 				tag=coordinates_to_index(i,j+1,cells)!storing the index to avoid calling the function more than once
 				matrix(i,j)=matrix(i,j)+matrix(i,j+1)!if two adjacent cells have the same value their become one with the sum of their previous values
 				if(matrix(i,j)>262144)then
@@ -83,6 +86,7 @@ subroutine move_down(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 					exit!moving on to the next column
 				end if
 				if(matrix(i,l)==matrix(i,k))then
+					no_cells_moved=.false.!at least one cell has moved
 					tag=coordinates_to_index(i,k,cells)!storing the index to avoid calling the function more than once
 					matrix(i,l)=matrix(i,l)+matrix(i,k)!if two adjacent cells have the same value their become one with the sum of their previous values
 					if(matrix(i,l)>262144)then
@@ -95,6 +99,7 @@ subroutine move_down(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 					empty_cells(current_empty_cells-1)=tag!recording the new empty cell
 					auxiliary_empty_cells(tag)=current_empty_cells-1!updating the auxiliary empty cells
 				else
+					no_cells_moved=.false.!at least one cell has moved
 					if(matrix(i,l)==0)then
 						tag=coordinates_to_index(i,l,cells)!storing the index of the empty cell to avoid calling the function more than once
 						matrix(i,l)=matrix(i,k)!this cell is moved to the spot held by the empty cell with coordinates (i,j)
@@ -111,6 +116,7 @@ subroutine move_down(auxiliary_empty_cells,auxiliary_empty_cells_history,current
 			end if
 		end do
 	end do
+	if(no_cells_moved)return!going back to the main program
 	score_history(history_position)=score!recording the current score in the history
 	random_component=nint(rand()*dble(current_empty_cells-1),4)!selecting a new cell to fill it with a number
 	new_cell_index=empty_cells(random_component)!the index of the new cell
